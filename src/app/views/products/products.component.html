@@ -1,0 +1,22 @@
+<app-caption caption="PRODUCTS"></app-caption>
+<div class="data-grid">
+    <app-products-grid (onChange)="productChanged($event)" [range]="range"></app-products-grid>
+</div>
+<div class="gray-line">
+    <div class="product-info">
+         <div class="info">
+            <app-products-info [product]="product"></app-products-info>
+        </div>
+        <div class="charts">
+            <div class="products-pie-container">
+            <app-products-chart category="sector" [isRowChanged]="isRowChanged" [productId]="productId" [productId]="productId" [range]="range"></app-products-chart>
+            <app-products-chart category="region" [isRowChanged]="isRowChanged" [productId]="productId" [range]="range"></app-products-chart>
+            <app-products-chart category="channel" [isRowChanged]="isRowChanged" [productId]="productId" [range]="range"></app-products-chart>
+            </div>
+            
+        </div>
+    </div>
+    <div class="range-selector">
+        <app-rangeselector [shutterColor]="shutterColor" (onChange)="rangeChanged($event)"></app-rangeselector>
+    </div>
+</div>

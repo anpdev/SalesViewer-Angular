@@ -1,0 +1,69 @@
+<div>
+    <app-caption caption="SALES BY DATE RANGE"></app-caption>
+    <div id="loadPanelContainer">
+     <dx-load-panel
+        #loadPanel
+        [position]="{of: '#salesgrid' }"
+        [(visible)]="loadingVisible"
+        [showIndicator]="true"
+        [showPane]="true"
+        [shading]=" "
+        [closeOnOutsideClick]="false"
+        >
+
+</dx-load-panel> 
+</div>
+<div class="table-responsive">
+    <div class="data-grid" id="salesgrid">
+        <dx-data-grid class="dx-theme-border-color"
+        [dataSource]="gridDataSource" 
+        [remoteOperations]="true" 
+        [noDataText]="loading" 
+        [allowColumnReordering]="true" 
+        [rowAlternationEnabled]="true" 
+        [showRowLines]="false"
+        [allowColumnReordering]="true"
+        [allowColumnResizing]="true"
+        [columnAutoWidth]="true"
+        [showBorders]="true"
+        >
+            <dxo-paging [pageSize]="10"></dxo-paging>
+            <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[5,10,15, 25, 50, 100]"></dxo-pager> 
+         
+          
+            <dxi-column dataField="Channel" dataType="string"></dxi-column>
+            <dxi-column dataField="Product"></dxi-column>
+            <dxi-column dataField="Amount" caption="Sale Amount" dataType="number" format="currency" alignment="right"></dxi-column>
+            <dxi-column dataField="Discount" caption="Discount" dataType="number" alignment="right" [allowGrouping]="false" [width]="150" cellTemplate="cellTemplate"></dxi-column>
+
+            <dxi-column dataField="saleDate" caption="Last Sale Date" dataType="date"></dxi-column>
+         
+            <div *dxTemplate="let cell of 'cellTemplate'" class="bullet-container">
+                <dx-bullet
+                    [value]="cell.value"
+                    [target]="0"
+                    [endScaleValue]="100"
+                    [startScaleValue]="0"
+                    [showTarget]="false"
+                    [showZeroLevel]="true"
+                >
+                    <dxo-size [width]="150" [height]="35"></dxo-size>
+                    <dxo-margin [top]="5" [bottom]="0" [left]="5"></dxo-margin>
+                    <dxo-tooltip [enabled]="true" [paddingTopBottom]="2" [zIndex]="5" [customizeTooltip]="customizeTooltip">
+                        <dxo-font [color]="bulletColor" [opacity]="1" [size]="18"></dxo-font>
+                        <dxo-shadow [opacity]="0.15" [blur]="0" color="#000" [offsetX]="3" [offsetY]="3"></dxo-shadow>
+                    </dxo-tooltip>
+                </dx-bullet>
+            </div>
+        </dx-data-grid>
+     </div>
+    </div>
+
+
+    </div> 
+    <div class="gray-line">
+     <div class="range-selector">
+        <app-rangeselector (onChange)="onRangeChanged($event)" [shutterColor]="shutterColor"></app-rangeselector>
+    
+</div>
+</div>

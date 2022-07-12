@@ -1,0 +1,36 @@
+<div>
+   <div *ngIf="department != '' && department != undefined">
+    <h5>Department</h5>
+    <div class="plant-description" [innerHTML]="department"></div>
+  </div>
+  
+   <div *ngIf="supplier != '' && supplier !== undefined">
+    <h5 class="support">Supplier</h5>
+    <div class="plant-description" [innerHTML]="supplier"></div>
+   </div>
+
+   <div *ngIf="supplier_code != '' && supplier_code !== undefined">
+    <h5 class="support">Supplier Code</h5>
+    <div class="plant-description" [innerHTML]="supplier_code"></div>
+   </div>
+
+   <div *ngIf="brand != '' && brand !== undefined">
+    <h5 class="support">Brand</h5>
+    <div class="plant-description" [innerHTML]="brand"></div>
+   </div>
+
+   <div *ngIf="location != '' && location !== undefined">
+    <h5 class="support">Location</h5>
+    <div class="plant-description" [innerHTML]="location"></div>
+   </div>
+
+   <div *ngIf="restock_level != '' && restock_level !== undefined">
+    <h5 class="support">Restock Level</h5>
+    <div class="plant-description" [innerHTML]="restock_level"></div>
+   </div>
+
+   <div *ngIf="unitsInInventory != '' && unitsInInventory !== undefined">
+     <h5 class="support">Stock</h5>
+     <div class="plant-description" [innerHTML]="unitsInInventory"></div>
+   </div>
+</div>

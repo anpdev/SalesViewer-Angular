@@ -1,0 +1,59 @@
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" #navbarToggler class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1">
+
+  <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      
+      </div>
+      <div id="navbar1" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li  routerLinkActive="active" (click)="collapseNav();" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['product']">Revenue by products</a></li>
+          <li  routerLinkActive="active" ><a (click)="collapseNav();" [routerLink]="['category']">Revenue by category</a></li>
+          <li  routerLinkActive="active" ><a (click)="collapseNav();" [routerLink]="['channel']">Revenue by channels</a></li>
+          <li  routerLinkActive="active" ><a (click)="collapseNav();" [routerLink]="['products']">Products</a></li>
+          <li  routerLinkActive="active" ><a (click)="collapseNav();" [routerLink]="['sales']">Sales</a></li>
+          <li  routerLinkActive="active" ><a (click)="collapseNav();" [routerLink]="['customers']">Customers</a></li>
+         
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+    <!--/.container-fluid -->
+  </nav>
+
+
+
+
+
+
+  <div class="header-container">
+    <div class="content">
+     <!-- <a class="logo" href="/">Hiecor</a>  -->
+        <nav>
+            <dx-menu
+                cssClass="top-menu"
+                [activeStateEnabled]="false"
+                [height]="60"
+                [dataSource]="menuRoutes"
+                selectionMode="none"
+
+            >
+                <div *dxTemplate="let i of 'item'">
+                    <a *ngIf="i.data" routerLink={{i.data.link}} routerLinkActive="dx-theme-accent-as-background-color" class="menu-item dx-theme-text-color">{{i.data.title}}{{ selectedChild(i) }}</a>
+                </div>
+            </dx-menu> 
+ 
+         </nav>
+
+
+         <!--Moblie menu-->
+
+
+</div>
+</div>

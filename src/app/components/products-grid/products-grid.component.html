@@ -1,0 +1,53 @@
+<div>
+    <div id="loadPanelContainer">
+     <dx-load-panel
+        #loadPanel
+        [position]="{of: '#productgrid' }"
+        [(visible)]="loadingVisible"
+        [showIndicator]="true"
+        [showPane]="true"
+        [shading]=" "
+        [closeOnOutsideClick]="false"
+        >
+ 
+</dx-load-panel>
+</div>
+
+<div class="table-responsive">
+<div class="data-grid" id="productgrid">
+    <dx-data-grid class="dx-theme-border-color"
+        [dataSource]="gridDataSource"
+        [showColumnLines]="false"
+        [showRowLines]="false"
+        [remoteOperations]="true"
+        (onSelectionChanged)="selectionChanged($event)"
+        [(selectedRowKeys)]="selectedRows"
+        [noDataText]="loading" 
+        [allowColumnReordering]="true"
+        [allowColumnResizing]="true"
+        [columnAutoWidth]="true"
+        [showBorders]="true"
+       
+     >
+        <dxo-paging [pageSize]="10"></dxo-paging>
+         <dxo-pager
+        [showPageSizeSelector]="true"
+        [allowedPageSizes]="[5,10, 25, 50, 100]"
+    ></dxo-pager>
+        
+        <dxo-selection mode="single"></dxo-selection>
+        
+        <dxi-column dataField="NAME" dataType="string" width="15%"></dxi-column>
+        <dxi-column dataField="description" dataType="string" width="30%"></dxi-column>
+        <dxi-column dataField="baseCost" dataType="number" width="10%" format="currency" alignment="right"></dxi-column>
+        <dxi-column dataField="listPrice" dataType="number" width="10%" format="currency" alignment="right"></dxi-column>
+        <dxi-column dataField="unitsInInventory" dataType="number" width="15%" alignment="right" cellTemplate="cellTemplate"></dxi-column>
+        <dxi-column dataField="unitsInManufacturing" dataType="number" width="20%" alignment="right"></dxi-column>
+         <dxi-column dataField="last_sale_date" dataType="date" width="20%" alignment="right"></dxi-column>
+        
+        <div *dxTemplate="let cell of 'cellTemplate'">
+            <span [ngClass]="{ 'bold': cell.value < 0 }">{{ cell.value }}</span>
+        </div>
+    </dx-data-grid>
+</div>
+</div>

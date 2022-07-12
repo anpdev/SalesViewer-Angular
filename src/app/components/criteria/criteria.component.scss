@@ -1,0 +1,58 @@
+.bars {
+    height: 315px;
+    padding: 0 50px 50px 50px;
+    margin: 0 auto;
+   
+
+    .left-bar, .right-bar {
+        float: left;
+        width: 46%;
+    }
+
+    .left-bar {
+        padding-right: 4%;
+    }
+
+    .right-bar {
+        padding-left: 4%;
+    }
+}
+
+.gray-line { 
+    
+    background: rgba(150, 150, 150, 0.1);
+
+    &.empty {
+       
+        background: rgba(150, 150, 150, 0.1);
+    }
+}
+
+::ng-deep #page .content {
+    background-color: rgba(245, 229, 166, 0.80);
+}
+::ng-deep .item {
+    height: 50%;
+}
+.caption {
+    padding-bottom: 2px;
+    font-weight: 400;
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+@media (min-width: 1200px) { 
+.bars {
+
+    min-width: 800px;
+    max-width: 1200px;
+    }
+}
+@media (max-width: 767px) {
+    .bars{display: flex;flex-wrap: wrap; padding: 0;height: 100%; padding: 0px; min-width: 100%;max-width: 100%;}
+    .bars .left-bar { flex: 0 0 100%; float: none !important; padding-right: 0%; }
+    .bars .right-bar { flex: 0 0 100%;float: none!important; padding-left: 0%; }  
+   
+   
+    .range-selector{padding: 0px;}
+}

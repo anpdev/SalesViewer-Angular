@@ -1,0 +1,55 @@
+    <div id="loadPanelContainer">
+          <dx-load-panel
+                #loadPanel
+                [position]="{of: '#customersgrid' }"
+                [(visible)]="loadingVisible"
+                [showIndicator]="true"
+                [showPane]="true"
+                [shading]=" "
+                [closeOnOutsideClick]="false"
+                >
+
+        </dx-load-panel>
+ 
+<div class="table-responsive">
+ <div class="data-grid" id="customersgrid">
+        <dx-data-grid class="dx-theme-border-color"
+            [dataSource]="gridDataSource"
+            [remoteOperations]="true"
+            [showColumnLines]="false"
+            [showRowLines]="false"
+            (onSelectionChanged)="customerChanged($event)"
+            [(selectedRowKeys)]="selectedRows"
+            [noDataText]="loading" 
+            [allowColumnReordering]="true"
+            [allowColumnResizing]="true"
+            [columnAutoWidth]="true"
+            [showBorders]="true"
+
+        >
+            <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[5,10, 25, 50, 100]"></dxo-pager>
+
+            <dxo-paging [pageSize]="10"></dxo-paging>
+
+            <dxo-selection mode="single"></dxo-selection>
+            <dxo-filter-row [visible]="true"></dxo-filter-row>
+           
+            <dxi-column dataField="id" caption="User ID" dataType="string" cellTemplate="cellTemplate">
+
+            </dxi-column>
+            
+            <dxi-column dataField="name" dataType="string"></dxi-column>
+            <dxi-column dataField="address" dataType="string"></dxi-column>
+            <dxi-column dataField="city" dataType="string" ></dxi-column>
+            <dxi-column dataField="state" dataType="string" ></dxi-column>
+            <dxi-column dataField="postalCode" caption="Postal Code" dataType="string" alignment="left"></dxi-column>
+            <dxi-column dataField="phone" dataType="string"></dxi-column>
+            <dxi-column dataField="totalSales" dataType="string"></dxi-column>
+             <dxi-column dataField="date_added" caption="Last Purchase Date" dataType="string"></dxi-column>
+             <div *dxTemplate="let cell of 'cellTemplate'">
+                  
+                     <a href= "javascript:void(0)" [text]="cell.value" (click)="RouterLink(cell)" ></a>
+                </div>
+        </dx-data-grid>
+    </div>
+ </div>
